@@ -28,10 +28,19 @@ body {
   background-color: #dbc6bb;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
 nav {
   display: flex;
   justify-content: space-evenly;
+  /* text-decoration: none; */
   /* use dif justify to make spacing non changing */
+}
+a {
+  text-decoration: none;
 }
 nav:first-child {
   visibility: hidden;
