@@ -1,0 +1,60 @@
+@font-face {
+  font-family: roboto-regular;
+  src: url("/source/resources/fonts/Roboto-Regular.ttf");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  font-family: roboto-regular;
+  margin: 0;
+  padding: 0;
+}
+
+.parent {
+  display: grid;
+  grid-template: auto 1fr auto / auto 1fr auto;
+  height: 100vh;
+  gap: 0.3rem;
+}
+
+body {
+  display: grid;
+  /* grid-template-rows: 100px 300px 300px 300px 300px; */
+  background-color: #dbc6bb;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  /* use dif justify to make spacing non changing */
+}
+nav:first-child {
+  visibility: hidden;
+}
+nav > * + * {
+  visibility: visible;
+}
+
+@media screen and (max-width: 640px) {
+  nav:first-child {
+    visibility: visible;
+  }
+  nav > * + * {
+    visibility: hidden;
+  }
+}
+
+/* @media only screen and (max-width: 768px) {
+  body {
+    background-color: lightgreen;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+} */

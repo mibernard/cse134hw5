@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Front-end Developer Portfolio</title>
+    <style>
+      /* Add styling here */
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Front-end Developer Portfolio</h1>
+    </header>
+    <nav>
+      <picture
+        ><img src="assets/hamburger.png" alt="hamburger.png" width="25px"
+      /></picture>
+      <a href="index.html">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="tests.html">Experiments</a>
+    </nav>
+    <main>
+      <section id="about">
+        <h1>About Me</h1>
+        <p>
+          <b><i>Hello!</i></b> My name is Matthew Bernard and I am an aspiring
+          web developer with experience in
+          <strong>HTML, CSS, and Javascript</strong>. I received my bachelor's
+          degree in Math-Computer Science at the University of California - San
+          Diego with a unique skillset and experience. I have a passion for
+          creating <span class="beautiful">beautiful</span> and functional
+          websites that deliver an <em>exceptional</em> user experience.
+        </p>
+        <img src="assets/bruhworking.png" width="500x" />
+        <br />
+        <p>Born and raised in this area!</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d211222.96684353775!2d-118.31106274386502!3d34.18830641161663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1678940642545!5m2!1sen!2sus"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <br />
+      </section>
+      <hr />
+      <section id="projects">
+        <h2>Projects</h2>
+        <div>
+          <h3>Project 1</h3>
+          <p>A brief description of Project 1.</p>
+          <a href="#">View Project</a>
+        </div>
+        <div>
+          <h3>Project 2</h3>
+          <p>A brief description of Project 2.</p>
+          <a href="#">View Project</a>
+        </div>
+        <div>
+          <h3>Project 3</h3>
+          <p>A brief description of Project 3.</p>
+          <a href="#">View Project</a>
+        </div>
+      </section>
+      <br />
+      <hr />
+      <section id="contact">
+        <h2>Contact</h2>
+        <form action="submit-form.php" method="post">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+          <br /><br />
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <br /><br />
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+          <br /><br />
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright &copy; 2023</p>
+    </footer>
+  </body>
+</html>
