@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      #response {
+        display: block;
+        white-space: pre-wrap;
+        font-family: monospace;
+        background-color: #f1f1f1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        max-width: 500px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Page Heading</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
+        dolor urna. Donec consectetur feugiat nisi id interdum. Donec tincidunt
+        facilisis elit eget vulputate. Duis ut massa quis eros iaculis viverra a
+        in eros. Morbi ullamcorper ante eu velit semper, at ultricies orci
+        tempus.
+      </p>
+
+      <form id="article-form">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id" required /><br /><br />
+
+        <label for="article_name">Article Name:</label>
+        <input
+          type="text"
+          id="article_name"
+          name="article_name"
+          required
+        /><br /><br />
+
+        <label for="article_body">Article Body:</label><br />
+        <textarea
+          id="article_body"
+          name="article_body"
+          rows="4"
+          cols="50"
+          required
+        ></textarea
+        ><br /><br />
+
+        <label for="date">Date:</label>
+        <input type="text" id="date" name="date" readonly /><br /><br />
+
+        <button type="button" id="postBtn">Post</button>
+        <button type="button" id="getBtn">Get</button>
+        <button type="button" id="putBtn">Put</button>
+        <button type="button" id="deleteBtn">Delete</button>
+      </form>
+
+      <output id="response"></output>
+    </main>
+
+    <footer>
+      <p>&copy; 2023 My Website. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.getElementById("date").value = new Date().toLocaleString();
+
+      function sendHttpRequest(method, url, data) {
+        return fetch(url, {
+          method: method,
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((response) => {
+          if (!response.ok) {
+            throw new Error("An error occurred while sending the request");
+          }
+          return response.json();
+        });
+      }
+
+      function handleResponse(response) {
+        const formattedResponse = JSON.stringify(response, null, 2);
+        document.getElementById("response").textContent = formattedResponse;
+      }
+
+      document.getElementById("postBtn").addEventListener("click", () => {
+        const data = new FormData(document.getElementById("article-form"));
+        const jsonData = Object.fromEntries(data.entries());
+        sendHttpRequest("POST", "https://httpbin.org/post", jsonData).then(
+          handleResponse
+        );
+      });
+
+      document.getElementById("getBtn").addEventListener("click", () => {
+        sendHttpRequest("GET", "https://httpbin.org/get").then(handleResponse);
+      });
+
+      document.getElementById("putBtn").addEventListener("click", () => {
+        const data = new FormData(document.getElementById("article-form"));
+        const jsonData = Object.fromEntries(data.entries());
+        sendHttpRequest("PUT", "https://httpbin.org/put", jsonData).then(
+          handleResponse
+        );
+      });
+
+      document.getElementById("deleteBtn").addEventListener("click", () => {
+        sendHttpRequest("DELETE", "https://httpbin.org/delete").then(
+          handleResponse
+        );
+      });
+    </script>
+  </body>
+</html>
