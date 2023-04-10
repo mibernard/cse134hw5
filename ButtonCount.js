@@ -71,6 +71,7 @@ class ButtonCount extends HTMLElement {
     });
     this.resetGranniesButton.addEventListener("click", () => {
       this.autoClickers = 0;
+      this.autoClickerInfo.textContent = `Cookies/sec: ${this.autoClickers}`;
     });
 
     setInterval(() => {
